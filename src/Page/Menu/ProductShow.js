@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ProductShow = ({ order ,handleAddData, quantity, setQuantity  }) => {
+const ProductShow = ({ order ,handleAddData, quantity, setQuantity , setId  }) => {
     
     const {products } = order  
     // const productStore = products.map(pro => pro)
@@ -30,9 +30,9 @@ const ProductShow = ({ order ,handleAddData, quantity, setQuantity  }) => {
                 product.image && <img src={product.image} class="product-img" alt="product imag"/>
                 }
                   <div> { quantity === 0 &&
-                   <button  onClick={()=>handleAddData(product)} className='product-order-btn'> Add   </button>}
+                   <button  onClick={()=>handleAddData(product, setId(product.id))} className='product-order-btn'> Add   </button>}
                           { quantity > 0 &&
-                           <div className='d-flex justify-content-center text-center'>
+                           <div className='d-flex justify-content-start text-center'>
                            <button  className='quantity-model' onClick={handleDecrement}>-</button> 
                             <input className='quantity-model input-quantity' value={quantity} readOnly ></input> 
                             <button className='quantity-model'  onClick={handleIncrement}>+</button>

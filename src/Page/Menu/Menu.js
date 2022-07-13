@@ -8,6 +8,7 @@ import OrderShow from './OrderShow';
 const Menu = () => {
     const [quantity , setQuantity] = useState(0)  
     const [orderProduct , setOrderProduct] = useState('')
+    const [id , setId] = useState('')
     const { isLoading, error, data } = useQuery('orderData', () =>
         fetch('https://myqa.fleksa.com/pyapi/26/menu').then(res =>
             res.json()
@@ -17,6 +18,7 @@ const Menu = () => {
 
     const orders = data.categories
     const handleAddData =(product) =>{
+        
         const mainOrder = [ ...orderProduct , product]        
             setOrderProduct(mainOrder)
             setQuantity(quantity + 1)
@@ -47,21 +49,21 @@ const Menu = () => {
                 </div>
             </div>
             <div className="row product-details ">
-                <div className="col-lg-3">
+                <div className="col-lg-2">
                     <h3>Categorious</h3>
                 </div>
                 <div className="col-lg-5 col-10">
                     {
-                        orders.map(order => <ProductShow quantity={quantity} setQuantity={setQuantity} order={order} key={order.id} handleAddData ={handleAddData }></ProductShow>)
+                        orders.map(order => <ProductShow quantity={quantity} setId={setId} setQuantity={setQuantity} order={order} key={order.id} handleAddData ={handleAddData }></ProductShow>)
                     }
                 </div>
-                <div className="col-lg-4 text-center">
+                <div className="col-lg-5 text-center">
                     <h3 className='add-cart'>Add to cart</h3>
                     <hr />
                     { orderProduct ?
                      <div className='order-show'>
                       {
-                        orderProduct?.map(order => <OrderShow order={order} key={order.id}></OrderShow>)
+                        orderProduct?.map(order => <OrderShow quantity={quantity} order={order} key={order.id} setQuantity={setQuantity}></OrderShow>)
                       }
                     </div> :
                     <div>

@@ -91,3 +91,24 @@
     font-size: 35px;
     font-weight: 300;
 }
+.cart-model{
+    font-size: 20px;
+    height: 20px ;
+    width: 40px;
+    background-color: black;
+   color: white;
+   margin-left:8px ;
+   line-height: 10px;
+   border-radius: 5px;
+}
+.cart-order-name{
+    width: 50%;
+}
+.cart-price{
+    width: 20%;
+}
+.cart-order-name, .cart-price{
+ font-weight: 700;
+ word-spacing: 0px;
+ 
+}
