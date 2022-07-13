@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query'
 import IsLoading from '../IsLoading/IsLoading';
 import ProductShow from './ProductShow';
 
 import './Menu.css'
 const Menu = () => {
+    const [quantity , setQuantity] = useState(0)  
     const { isLoading, error, data } = useQuery('orderData', () =>
         fetch('https://myqa.fleksa.com/pyapi/26/menu').then(res =>
             res.json()
@@ -13,9 +14,13 @@ const Menu = () => {
     if (isLoading) return <IsLoading></IsLoading>
 
     const orders = data.categories
-    console.log("offers data", data.offers)
-    console.log("parts data", data.parts)
-    console.log("sides data", data.sides)
+    const handleAddData =(product) =>{
+            console.log("order data" , product)
+            setQuantity(quantity + 1)
+    }
+    // console.log("offers data", data.offers)
+    // console.log("parts data", data.parts)
+    // console.log("sides data", data.sides)
     return (
         <div>
             <div className="row">
@@ -41,7 +46,7 @@ const Menu = () => {
                 <div className="col-3">Categorious</div>
                 <div className="col-lg-5 col-10">
                     {
-                        orders.map(order => <ProductShow order={order} key={order.id}></ProductShow>)
+                        orders.map(order => <ProductShow quantity={quantity} setQuantity={setQuantity} order={order} key={order.id} handleAddData ={handleAddData }></ProductShow>)
                     }
                 </div>
                 <div className="col-4">Add to card</div>

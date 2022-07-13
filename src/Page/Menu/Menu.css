@@ -64,3 +64,17 @@
     padding: 10px;
     border-radius: 5px;
 }
+.quantity-model{
+    background-color:rgb(255, 238, 50) ;
+    height: 40px;
+    width: 40px;
+    border: none;
+    margin: 3px;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 15px;
+}
+.input-quantity{
+    font-size: 20px;
+    text-align: center;
+}

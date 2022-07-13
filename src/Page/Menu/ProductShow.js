@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ProductShow = ({ order }) => {
-    const {products } = order
-   console.log(products)
-
+const ProductShow = ({ order ,handleAddData, quantity, setQuantity  }) => {
+    
+    const {products } = order  
+    const productStore = products.map(pro => pro)
+    console.log(productStore ," product store")
+   
+    const handleIncrement =() =>{
+        setQuantity(quantity + 1)
+    }
+    const handleDecrement =() =>{
+        setQuantity(quantity - 1)
+    }
     return (
         <div>
            {
-            products.map(product => <div class="product-card mb-3 d-flex justify-content-between align-items-center">
+            products.map( product => <div class="product-card mb-3 d-flex justify-content-between align-items-center">
                
             
                 <div class="mx-2">
@@ -21,7 +29,15 @@ const ProductShow = ({ order }) => {
                 {
                 product.image && <img src={product.image} class="product-img" alt="product imag"/>
                 }
-                  <p>  <button className='product-order-btn'>Add</button></p>
+                  <div> { quantity === 0 &&
+                   <button  onClick={()=>handleAddData(product)} className='product-order-btn'> Add   </button>}
+                          { quantity > 0 &&
+                           <div className='d-flex justify-content-center text-center'>
+                           <button  className='quantity-model' onClick={handleDecrement}>-</button> 
+                            <input className='quantity-model input-quantity' value={quantity} ></input> 
+                            <button className='quantity-model'  onClick={handleIncrement}>+</button>
+                           </div>}
+                  </div>
                 </div>
                 
                 </div>
