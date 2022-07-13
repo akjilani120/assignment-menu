@@ -1,18 +1,35 @@
 import React from 'react';
 
 const ProductShow = ({ order }) => {
-    // console.log("productOrder show", order)
+    const {products } = order
+   console.log(products)
+
     return (
         <div>
-            <div class="card mb-3">
-                <h1> Order Lenght{order.length}</h1>
-                <img src="..." class="card-img-top" alt="..."/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-            </div>
+           {
+            products.map(product => <div class="product-card mb-3 d-flex justify-content-between align-items-center">
+               
+            
+                <div class="mx-2">
+                    <h6 class="product-title">{product.name_json.english}</h6>
+                    <p className='product-discription'>{product.description_json.english}</p>                  
+                    <p className='product-price'>  € {product.price}  </p>
+                </div>
+                <div>
+                
+                <div>
+                {
+                product.image && <img src={product.image} class="product-img" alt="product imag"/>
+                }
+                  <p>  <button className='product-order-btn'>Add</button></p>
+                </div>
+                
+                </div>
+               
+        </div>)
+       
+           }
+           
         </div>
     );
 };

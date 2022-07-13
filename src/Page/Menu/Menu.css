@@ -1,0 +1,66 @@
+.banner{
+    height: 70vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.banner-overflow{
+    background-color: rgba(0, 0, 0, 0.418);
+    height: 70vh;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.pizza-title{
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 0;
+
+}
+.banner-overflow p{
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.pizz-btn{
+    background-color: white;
+    border: none;
+    height: 60px;
+    width: 120px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: 400;
+    
+}
+.product-card{
+    border-bottom: 1px solid rgb(221, 216, 216);
+    margin: 10px;
+    padding: 10px;
+}
+.product-img{
+    height: 80px;
+    width: 80px;
+}
+.product-title{
+    font-weight: 700;
+    margin: 0;
+}
+.product-price{
+    font-weight: 600;
+    margin: 0;
+    font-size: 18px;
+}
+.product-discription{
+    color: rgb(12, 3, 3);
+    font-weight: 400;
+}
+.product-order-btn{
+    border: none;
+    background-color: rgb(255, 238, 50);
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 5px;
+}
