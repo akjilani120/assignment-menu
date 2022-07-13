@@ -19,6 +19,9 @@
     margin-bottom: 0;
 
 }
+.product-details{
+    padding-top: 100px;
+}
 .banner-overflow p{
     font-size: 18px;
     font-weight: 400;
@@ -73,8 +76,18 @@
     font-size: 35px;
     font-weight: 600;
     line-height: 15px;
+    border-radius: 5px;
 }
 .input-quantity{
     font-size: 20px;
     text-align: center;
+}
+.order-about{
+    font-size: 25px;
+    opacity: 0.7;
+    font-weight: 600;
+}
+.add-cart{
+    font-size: 35px;
+    font-weight: 300;
 }

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const ProductShow = ({ order ,handleAddData, quantity, setQuantity  }) => {
     
     const {products } = order  
-    const productStore = products.map(pro => pro)
-    console.log(productStore ," product store")
+    // const productStore = products.map(pro => pro)
+    // console.log(productStore ," product store")
    
     const handleIncrement =() =>{
         setQuantity(quantity + 1)
@@ -34,7 +34,7 @@ const ProductShow = ({ order ,handleAddData, quantity, setQuantity  }) => {
                           { quantity > 0 &&
                            <div className='d-flex justify-content-center text-center'>
                            <button  className='quantity-model' onClick={handleDecrement}>-</button> 
-                            <input className='quantity-model input-quantity' value={quantity} ></input> 
+                            <input className='quantity-model input-quantity' value={quantity} readOnly ></input> 
                             <button className='quantity-model'  onClick={handleIncrement}>+</button>
                            </div>}
                   </div>

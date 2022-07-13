@@ -4,8 +4,10 @@ import IsLoading from '../IsLoading/IsLoading';
 import ProductShow from './ProductShow';
 
 import './Menu.css'
+import OrderShow from './OrderShow';
 const Menu = () => {
     const [quantity , setQuantity] = useState(0)  
+    const [orderProduct , setOrderProduct] = useState('')
     const { isLoading, error, data } = useQuery('orderData', () =>
         fetch('https://myqa.fleksa.com/pyapi/26/menu').then(res =>
             res.json()
@@ -15,15 +17,17 @@ const Menu = () => {
 
     const orders = data.categories
     const handleAddData =(product) =>{
-            console.log("order data" , product)
+        const mainOrder = [ ...orderProduct , product]        
+            setOrderProduct(mainOrder)
             setQuantity(quantity + 1)
     }
     // console.log("offers data", data.offers)
     // console.log("parts data", data.parts)
     // console.log("sides data", data.sides)
+    console.log(orderProduct , "order list")
     return (
-        <div>
-            <div className="row">
+        <div className=''>
+            <div className="row ">
                 <div className="col-12 banner" style={{ backgroundImage: `url(https://www.massoninyc.com/wp-content/uploads/2021/11/Pizza-1.jpg)` }} >
                     <div className="banner-overflow">
                         <div>
@@ -42,14 +46,32 @@ const Menu = () => {
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-3">Categorious</div>
+            <div className="row product-details ">
+                <div className="col-lg-3">
+                    <h3>Categorious</h3>
+                </div>
                 <div className="col-lg-5 col-10">
                     {
                         orders.map(order => <ProductShow quantity={quantity} setQuantity={setQuantity} order={order} key={order.id} handleAddData ={handleAddData }></ProductShow>)
                     }
                 </div>
-                <div className="col-4">Add to card</div>
+                <div className="col-lg-4 text-center">
+                    <h3 className='add-cart'>Add to cart</h3>
+                    <hr />
+                    { orderProduct ?
+                     <div className='order-show'>
+                      {
+                        orderProduct?.map(order => <OrderShow order={order} key={order.id}></OrderShow>)
+                      }
+                    </div> :
+                    <div>
+                    <img className='w-100' src="https://roma.fleksa.com/assets/svg/cart-empty.svg" alt="" />
+                    <h2 className='order-about'>Please select at least one product to place an order</h2>
+                </div>
+                    }
+                    
+
+                </div>
 
             </div>
         </div>
