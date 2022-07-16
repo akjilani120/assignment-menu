@@ -6,7 +6,8 @@ import ProductShow from './ProductShow';
 import './Menu.css'
 import OrderShow from './OrderShow';
 const Menu = () => {
-    const [quantity , setQuantity] = useState(0)  
+    const [isreload, setIsReload]=useState(false)
+    const [cart , setCart] = useState([])  
     const [orderProduct , setOrderProduct] = useState('')
     const [id , setId] = useState('')
     const { isLoading, error, data } = useQuery('orderData', () =>
@@ -17,16 +18,11 @@ const Menu = () => {
     if (isLoading) return <IsLoading></IsLoading>
 
     const orders = data.categories
-    const handleAddData =(product) =>{
-        
-        const mainOrder = [ ...orderProduct , product]        
-            setOrderProduct(mainOrder)
-            setQuantity(quantity + 1)
-    }
+    
     // console.log("offers data", data.offers)
     // console.log("parts data", data.parts)
     // console.log("sides data", data.sides)
-    console.log(orderProduct , "order list")
+    console.log(id , "id add")
     return (
         <div className=''>
             <div className="row ">
@@ -54,16 +50,16 @@ const Menu = () => {
                 </div>
                 <div className="col-lg-5 col-10">
                     {
-                        orders.map(order => <ProductShow quantity={quantity} setId={setId} setQuantity={setQuantity} order={order} key={order.id} handleAddData ={handleAddData }></ProductShow>)
+                        orders.map(order => <ProductShow isreload={isreload} setIsReload={setIsReload} cart ={cart} setId={setId} setCart={setCart} order={order} key={order.id} ></ProductShow>)
                     }
                 </div>
                 <div className="col-lg-5 text-center">
                     <h3 className='add-cart'>Add to cart</h3>
                     <hr />
-                    { orderProduct ?
+                    { cart ?
                      <div className='order-show'>
                       {
-                        orderProduct?.map(order => <OrderShow quantity={quantity} order={order} key={order.id} setQuantity={setQuantity}></OrderShow>)
+                       cart?.map(order => <OrderShow cart={cart} setCart={setCart} isreload={isreload} setIsReload={setIsReload} order={order} key={order.id}></OrderShow>)
                       }
                     </div> :
                     <div>
