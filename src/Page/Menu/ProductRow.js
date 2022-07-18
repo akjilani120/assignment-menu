@@ -38,8 +38,7 @@ const ProductRow = ({product , cart , setCart, isreload , setIsReload}) => {
         }
     }
     return (
-        <div class="product-card mb-3 d-flex justify-content-between align-items-center">
-               
+        <div class="product-card mb-3 d-flex justify-content-between align-items-center">              
               
         <div class="mx-2">
             <h6 class="product-title">{product.name_json.english}</h6>

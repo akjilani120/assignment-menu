@@ -7,6 +7,9 @@ const OrderShow = ({cart , setCart, order , isreload , setIsReload }) => {
     useEffect(()=>{
         const mainPrice = parseFloat(price) * quantity
         const mainBalance= mainPrice.toFixed(2)
+        let total = 0;
+            total = total + mainPrice
+            console.log("total balance" , total)
         setTotal(mainBalance)
     },[order,quantity,price, isreload]) 
 
