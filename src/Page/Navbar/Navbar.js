@@ -15,10 +15,10 @@ const Navbar = () => {
            
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <Link className='nav-link' to='/'>Home</Link>
+                <Link className='nav-link' to='/home'>Home</Link>
               </li>
               <li class="nav-item">
-               <Link className='nav-link' to='/menu'>Menu</Link>
+               <Link className='nav-link' to='/'>Menu</Link>
               </li>
               <li class="nav-item">
                 <Link className='nav-link' to='/reservation'>Reservation</Link>
